@@ -33,7 +33,6 @@ class TopicsController < ApplicationController
    
     def update
      @topic = Topic.find(params[:id])
- 
      @topic.name = params[:topic][:name]
      @topic.description = params[:topic][:description]
      @topic.public = params[:topic][:public]
@@ -57,6 +56,6 @@ class TopicsController < ApplicationController
        flash.now[:alert] = "There was an error deleting the topic."
        render :show
      end
-   end
+    end
  
 end
