@@ -3,7 +3,6 @@ require 'random_data'
 
 5.times do
    User.create!(
- # #3
    name:     RandomData.random_name,
    email:    RandomData.random_email,
    password: RandomData.random_sentence
@@ -48,10 +47,17 @@ require 'random_data'
  Post.find_or_create_by(title: "The Unique One", body: "Uniqueness all over here", )
  puts "#{Post.count}"
  
- user = User.first
- user.update_attributes!(
-   email: 'brown.emily.paige@gmail.com', 
-   password: 'Thunder'
+admin = User.create!(
+   name:     'Admin User',
+   email:    'admin@example.com',
+   password: 'helloworld',
+   role:     'admin'
+ )
+ 
+ member = User.create!(
+   name:     'Member User',
+   email:    'member@example.com',
+   password: 'helloworld'
  )
 
  puts "Seed finished"
