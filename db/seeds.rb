@@ -30,6 +30,7 @@ require 'random_data'
  
  100.times do
    Comment.create!(
+     user: users.sample,
      post: posts.sample,
      body: RandomData.random_paragraph
    )
@@ -42,6 +43,7 @@ require 'random_data'
     resolve: false
     )
  end
+ 
  
  puts "#{Post.count}"
  Post.find_or_create_by(title: "The Unique One", body: "Uniqueness all over here", )
