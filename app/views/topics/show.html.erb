@@ -12,6 +12,7 @@
      <p class="lead"><%= @topic.description %></p>
      <% @topic.posts.each do |post| %>
        <%= render partial: 'posts/post', locals: {post:post} %>
+        <%= render partial: 'votes/voting', locals: { post: post } %>
      <% end %>
    </div>
   <% if current_user %>
