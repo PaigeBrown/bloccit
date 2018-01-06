@@ -19,9 +19,22 @@
    </div>
  </div>
  
- // #14
+ <h2>Favorites</h2>
+ <% if no_user_favorites(@user) %>
+   <p><%= @user.name %> has no favorites.</p>
+ <% else %>
+   <%= render @user.favorite_posts %>
+ <% end %>
  <h2>Posts</h2>
- <%= render @user.posts %>
+ <% if no_user_posts(@user) %>
+   <p><%= @user.name %> has not submitted any posts yet.</p>
+ <% else %>
+   <%= render @user.posts %>
+ <% end %>
  
  <h2>Comments</h2>
- <%= render @user.comments %>
+ <% if no_user_comments(@user) %>
+   <p><%= @user.name %> has not submitted any comments yet.</p>
+ <% else %>
+   <%= render @user.comments %>
+ <% end %>

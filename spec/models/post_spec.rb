@@ -7,7 +7,8 @@ RSpec.describe Post, type: :model do
    let(:body) { RandomData.random_paragraph }
    let(:topic) { create(:topic) }
    let(:user) { create(:user) }
-   let(:post) { create(:post) }
+   let(:post) { create(:post, title: title, body: body, user: user) }
+   let(:favorite) { Favorite.create!(post: post, user: user) }   
    it { is_expected.to belong_to(:topic) }
    it { is_expected.to belong_to(:user) }
    it { is_expected.to have_many(:comments) }
@@ -28,6 +29,20 @@ RSpec.describe Post, type: :model do
        
      end
    end
+   
+   describe "favorited scope filter" do
+     let(:another_post) { create(:post, title: title, body: body, user: user) }
+ 
+     it "returns a list of posts that the user favorited" do
+       user.favorites << favorite
+       expect(Post.favorited(user).first).to eq(post)
+     end
+ 
+     it "returns does not return posts that were not favorited" do
+       expect(Post.favorited(user).first).not_to eq(post)
+     end
+   end
+ 
    
     describe "voting" do
      before do
