@@ -30,7 +30,14 @@ class User < ActiveRecord::Base
        end
    end
    
+   # error here, says that the post is not nil, instead of is nil. throwing off second test
    def favorite_for(post)
-     favorites.where(post_id: post.id).first
+    favorites.where(post_id: post.id).first
+   end
+   
+   
+   def avatar_url(size)
+     gravatar_id = Digest::MD5::hexdigest(self.email).downcase
+     "http://gravatar.com/avatar/#{gravatar_id}.png?s=#{size}"
    end
 end
