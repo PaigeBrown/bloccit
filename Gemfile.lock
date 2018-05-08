@@ -3,7 +3,7 @@ GEM
   specs:
     actionmailer (4.2.5)
       actionpack (= 4.2.5)
-      actionview (= 4.2.5)
+      actionview (= 4.2.7.1)
       activejob (= 4.2.5)
       mail (~> 2.5, >= 2.5.4)
       rails-dom-testing (~> 1.0, >= 1.0.5)
